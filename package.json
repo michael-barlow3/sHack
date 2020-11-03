@@ -1,10 +1,11 @@
 {
   "name": "vas",
-  "version": "0.0.1",
-  "description": "MonoRepo for VistA Audit Solution Project",
+  "version": "1.0.0",
+  "description": "VistA Audit Solution",
   "author": "Mike Barlow <michael.barlow3@va.gov>",
   "homepage": "https://github.com/department-of-veterans-affairs/vsra-code#readme",
   "license": "MIT",
+  "Comments": "Need to verify what dependencies are actually used and remove ones that aren't",
   "scripts": {
     "subscriber:comment": "Launch Subscriber Service locally",
     "subscriber": "node ./packages/subscriber",
