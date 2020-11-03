@@ -1,0 +1,39 @@
+{
+	"_id": {
+		"$oid": "5ee6653139c106230ea9efad"
+	},
+	"HEADER": {
+		"RequestType": "Read",
+		"User": {
+			"DUZ": 1087960193,
+			"UID": 59074875,
+			"UserName": "KAZU,G'KALI",
+			"Title": "charge kill"
+		},
+		"Location": {
+			"Site": "DANBURY",
+			"StationNumber": 107740
+		},
+		"DateTime": "20110710032418-0500",
+		"SchemaType": "FMAUDIT",
+		"Patient": {
+			"DFN": 6701659872,
+			"DOB": 19960903,
+			"INITPLUS4": "R2645",
+			"MVI": "51496f57V98e94d86",
+			"PatientName": "RESTAGH,CH'KALA",
+			"SSN": "340052645"
+		}
+	},
+	"SCHEMA": {
+		"RECORD ADDED": "",
+		"ACCESSED": "",
+		"NEW VALUE": "",
+		"OLD VALUE": "",
+		"FIELD NAME": "LOCALLY ASSIGNED ICN",
+		"PROTOCOL or OPTION USED": "RG ADT OUTPATIENT ENCOUNTER DRIVER",
+		"FILE NUMBER": 391.91,
+		"FILE NAME": "PATIENT",
+		"MENU OPTION USED": ""
+    }
+}

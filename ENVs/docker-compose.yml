@@ -1,0 +1,44 @@
+version: '3'
+services:
+  mongo:
+    image: "mongo"
+    container_name: "mongo"
+    env_file:
+      - TestEnv4DC.env
+    ports:
+     - "27017:27017"
+    volumes:
+     - ./mongo-volume:/data/db
+
+  subscriber:
+    image: "subscriber_r2"
+    container_name: "subscriber"
+    environment:
+      - drUrl=mongodb://mongo:27017/vsr
+    env_file:
+      - TestEnv4DC.env
+    depends_on:
+      - "mongo"
+
+  metadata:
+    image: "metadata_r2"
+    container_name: "metadata"
+    environment:
+      - drUrl=mongodb://mongo:27017/vsr
+    env_file:
+      - TestEnv4DC.env
+    depends_on:
+      - "mongo"
+    ports:
+      - "8081:8081"
+
+  utils:
+    image: "utils"
+    container_name: "utils"
+    environment:
+      - drUrl=mongodb://mongo:27017/vsr
+    env_file:
+      - TestEnv4DC.env
+    depends_on:
+      - "subscriber"
+      - "mongo"

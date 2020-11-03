@@ -1,0 +1,24 @@
+### Node ###
+*.bak
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+npm-error.log*
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# nyc test coverage
+.nyc_output
+
+# Node Modules
+node_modules/
+
+# Parcel cache and distribution folders
+.cache/
+dist/
+reports/
+packages/gui

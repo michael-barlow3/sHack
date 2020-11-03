@@ -1,0 +1,439 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "VAS_Audit_Schema",
+    "type": "object",
+    "title": "Audit Schema",
+    "description": "JSON Schema for Audit Record Object sent by VistA in the VistA Audit Solution",
+    "default": {},
+    "examples": [
+        {
+            "path": "2016/09/04/12345678.json",
+            "HEADER": {
+                "RequestType": "Read",
+                "User": {
+                    "DUZ": 1087960193,
+                    "UID": 59074875,
+                    "UserName": "KAZU,G'KALI",
+                    "Title": "movement might rays everything"
+                },
+                "Location": {
+                    "Site": "PORTLAND",
+                    "StationNumber": 107740
+                },
+                "DateTime": "20160904014916-0500",
+                "SchemaType": "FMAUDIT",
+                "Patient": {
+                    "DFN": 4490997511,
+                    "DOB": 19532105,
+                    "INITPLUS4": "V4778",
+                    "MVI": "c4bcc974Ve67243fa",
+                    "PatientName": "VRAG,KELLY",
+                    "SSN": "560864778"
+                }
+            },
+            "SCHEMA": {
+                "RECORD ADDED": "",
+                "ACCESSED": "",
+                "NEW VALUE": "",
+                "OLD VALUE": "",
+                "FIELD NAME": "PREFERRED NAME",
+                "PROTOCOL or OPTION USED": "VAQ PDX4 (MENU)",
+                "FILE NUMBER": 162.2,
+                "FILE NAME": "PATIENT ALLERGIES",
+                "MENU OPTION USED": ""
+            }
+        }
+    ],
+    "required": [
+        "path",
+        "HEADER",
+        "SCHEMA"
+    ],
+    "properties": {
+        "path": {
+            "$id": "#/properties/path",
+            "type": "string",
+            "title": "Audit Record Path in S3",
+            "examples": [
+                "2016/09/04/12345678.json"
+            ]
+        },
+        "HEADER": {
+            "$id": "#/properties/HEADER",
+            "type": "object",
+            "title": "The HEADER schema",
+            "description": "Header for audit record. Schema is consistent for all records",
+
+            "examples": [
+                {
+                    "RequestType": "Read",
+                    "User": {
+                        "DUZ": 1087960193,
+                        "UID": 59074875,
+                        "UserName": "KAZU,G'KALI",
+                        "Title": "movement might rays everything"
+                    },
+                    "Location": {
+                        "Site": "PORTLAND",
+                        "StationNumber": 107740
+                    },
+                    "DateTime": "20160904014916-0500",
+                    "SchemaType": "FMAUDIT",
+                    "Patient": {
+                        "DFN": 4490997511,
+                        "DOB": 19532105,
+                        "INITPLUS4": "V4778",
+                        "MVI": "c4bcc974Ve67243fa",
+                        "PatientName": "VRAG,KELLY",
+                        "SSN": "560864778"
+                    }
+                }
+            ],
+            "required": [
+                "RequestType",
+                "User",
+                "Location",
+                "DateTime",
+                "SchemaType",
+                "Patient"
+            ],
+            "properties": {
+                "RequestType": {
+                    "$id": "#/properties/HEADER/properties/RequestType",
+                    "type": "string",
+                    "title": "The RequestType schema",
+                    "default": "",
+                    "examples": [
+                        "Read"
+                    ]
+                },
+                "User": {
+                    "$id": "#/properties/HEADER/properties/User",
+                    "type": "object",
+                    "title": "The User schema",
+                    "default": {},
+                    "examples": [
+                        {
+                            "DUZ": 1087960193,
+                            "UID": 59074875,
+                            "UserName": "KAZU,G'KALI",
+                            "Title": "movement might rays everything"
+                        }
+                    ],
+                    "required": [
+                        "DUZ",
+                        "UID",
+                        "UserName",
+                        "Title"
+                    ],
+                    "properties": {
+                        "DUZ": {
+                            "$id": "#/properties/HEADER/properties/User/properties/DUZ",
+                            "type": "integer",
+                            "title": "The DUZ schema",
+                            "default": 0,
+                            "examples": [
+                                1087960193
+                            ]
+                        },
+                        "UID": {
+                            "$id": "#/properties/HEADER/properties/User/properties/UID",
+                            "type": "integer",
+                            "title": "The UID schema",
+
+                            "default": 0,
+                            "examples": [
+                                59074875
+                            ]
+                        },
+                        "UserName": {
+                            "$id": "#/properties/HEADER/properties/User/properties/UserName",
+                            "type": "string",
+                            "title": "The UserName schema",
+                            "default": "",
+                            "examples": [
+                                "KAZU,G'KALI"
+                            ]
+                        },
+                        "Title": {
+                            "$id": "#/properties/HEADER/properties/User/properties/Title",
+                            "type": "string",
+                            "title": "The Title schema",
+                            "default": "",
+                            "examples": [
+                                "movement might rays everything"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "Location": {
+                    "$id": "#/properties/HEADER/properties/Location",
+                    "type": "object",
+                    "title": "The Site Location",
+                    "default": {},
+                    "examples": [
+                        {
+                            "Site": "PORTLAND",
+                            "StationNumber": 107740
+                        }
+                    ],
+                    "required": [
+                        "Site",
+                        "StationNumber"
+                    ],
+                    "properties": {
+                        "Site": {
+                            "$id": "#/properties/HEADER/properties/Location/properties/Site",
+                            "type": "string",
+                            "title": "The Site schema",
+                            "default": "",
+                            "examples": [
+                                "PORTLAND"
+                            ]
+                        },
+                        "StationNumber": {
+                            "$id": "#/properties/HEADER/properties/Location/properties/StationNumber",
+                            "type": "integer",
+                            "title": "The StationNumber schema",
+                            "default": 0,
+                            "examples": [
+                                107740
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "DateTime": {
+                    "$id": "#/properties/HEADER/properties/DateTime",
+                    "type": "string",
+                    "title": "The DateTime schema",
+                    "default": "",
+                    "examples": [
+                        "20160904014916-0500"
+                    ]
+                },
+                "SchemaType": {
+                    "$id": "#/properties/HEADER/properties/SchemaType",
+                    "type": "string",
+                    "title": "The SchemaType schema",
+                    "default": "",
+                    "examples": [
+                        "FMAUDIT"
+                    ]
+                },
+                "Patient": {
+                    "$id": "#/properties/HEADER/properties/Patient",
+                    "type": "object",
+                    "title": "The Patient schema",
+                    "default": {},
+                    "examples": [
+                        {
+                            "DFN": 4490997511,
+                            "DOB": 19532105,
+                            "INITPLUS4": "V4778",
+                            "MVI": "c4bcc974Ve67243fa",
+                            "PatientName": "VRAG,KELLY",
+                            "SSN": "560864778"
+                        }
+                    ],
+                    "required": [
+                        "DFN",
+                        "DOB",
+                        "INITPLUS4",
+                        "MVI",
+                        "PatientName",
+                        "SSN"
+                    ],
+                    "properties": {
+                        "DFN": {
+                            "$id": "#/properties/HEADER/properties/Patient/properties/DFN",
+                            "type": "integer",
+                            "title": "The DFN schema",
+                            "default": 0,
+                            "examples": [
+                                4490997511
+                            ]
+                        },
+                        "DOB": {
+                            "$id": "#/properties/HEADER/properties/Patient/properties/DOB",
+                            "type": "integer",
+                            "title": "The DOB schema",
+                            "description": "Patient DOB in YYYYMMDD format",
+                            "default": 0,
+                            "examples": [
+                                19532105
+                            ]
+                        },
+                        "INITPLUS4": {
+                            "$id": "#/properties/HEADER/properties/Patient/properties/INITPLUS4",
+                            "type": "string",
+                            "title": "The INITPLUS4 schema",
+                            "default": "",
+                            "examples": [
+                                "V4778"
+                            ]
+                        },
+                        "MVI": {
+                            "$id": "#/properties/HEADER/properties/Patient/properties/MVI",
+                            "type": "string",
+                            "title": "The MVI schema",
+
+                            "default": "",
+                            "examples": [
+                                "c4bcc974Ve67243fa"
+                            ]
+                        },
+                        "PatientName": {
+                            "$id": "#/properties/HEADER/properties/Patient/properties/PatientName",
+                            "type": "string",
+                            "title": "The PatientName schema",
+
+                            "default": "",
+                            "examples": [
+                                "VRAG,KELLY"
+                            ]
+                        },
+                        "SSN": {
+                            "$id": "#/properties/HEADER/properties/Patient/properties/SSN",
+                            "type": "string",
+                            "title": "The SSN schema",
+
+                            "default": "",
+                            "examples": [
+                                "560864778"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                }
+            },
+            "additionalProperties": true
+        },
+        "SCHEMA": {
+            "$id": "#/properties/SCHEMA",
+            "type": "object",
+            "title": "The SCHEMA schema",
+
+            "default": {},
+            "examples": [
+                {
+                    "RECORD ADDED": "",
+                    "ACCESSED": "",
+                    "NEW VALUE": "",
+                    "OLD VALUE": "",
+                    "FIELD NAME": "PREFERRED NAME",
+                    "PROTOCOL or OPTION USED": "VAQ PDX4 (MENU)",
+                    "FILE NUMBER": 162.2,
+                    "FILE NAME": "PATIENT ALLERGIES",
+                    "MENU OPTION USED": ""
+                }
+            ],
+            "required": [
+                "RECORD ADDED",
+                "ACCESSED",
+                "NEW VALUE",
+                "OLD VALUE",
+                "FIELD NAME",
+                "PROTOCOL or OPTION USED",
+                "FILE NUMBER",
+                "FILE NAME",
+                "MENU OPTION USED"
+            ],
+            "properties": {
+                "RECORD ADDED": {
+                    "$id": "#/properties/SCHEMA/properties/RECORD%20ADDED",
+                    "type": "string",
+                    "title": "The RECORD ADDED schema",
+
+                    "default": "",
+                    "examples": [
+                        ""
+                    ]
+                },
+                "ACCESSED": {
+                    "$id": "#/properties/SCHEMA/properties/ACCESSED",
+                    "type": "string",
+                    "title": "The ACCESSED schema",
+
+                    "default": "",
+                    "examples": [
+                        ""
+                    ]
+                },
+                "NEW VALUE": {
+                    "$id": "#/properties/SCHEMA/properties/NEW%20VALUE",
+                    "type": "string",
+                    "title": "The NEW VALUE schema",
+
+                    "default": "",
+                    "examples": [
+                        ""
+                    ]
+                },
+                "OLD VALUE": {
+                    "$id": "#/properties/SCHEMA/properties/OLD%20VALUE",
+                    "type": "string",
+                    "title": "The OLD VALUE schema",
+
+                    "default": "",
+                    "examples": [
+                        ""
+                    ]
+                },
+                "FIELD NAME": {
+                    "$id": "#/properties/SCHEMA/properties/FIELD%20NAME",
+                    "type": "string",
+                    "title": "The FIELD NAME schema",
+
+                    "default": "",
+                    "examples": [
+                        "PREFERRED NAME"
+                    ]
+                },
+                "PROTOCOL or OPTION USED": {
+                    "$id": "#/properties/SCHEMA/properties/PROTOCOL%20or%20OPTION%20USED",
+                    "type": "string",
+                    "title": "The PROTOCOL or OPTION USED schema",
+
+                    "default": "",
+                    "examples": [
+                        "VAQ PDX4 (MENU)"
+                    ]
+                },
+                "FILE NUMBER": {
+                    "$id": "#/properties/SCHEMA/properties/FILE%20NUMBER",
+                    "type": "number",
+                    "title": "The FILE NUMBER schema",
+
+                    "default": 0.0,
+                    "examples": [
+                        162.2
+                    ]
+                },
+                "FILE NAME": {
+                    "$id": "#/properties/SCHEMA/properties/FILE%20NAME",
+                    "type": "string",
+                    "title": "The FILE NAME schema",
+
+                    "default": "",
+                    "examples": [
+                        "PATIENT ALLERGIES"
+                    ]
+                },
+                "MENU OPTION USED": {
+                    "$id": "#/properties/SCHEMA/properties/MENU%20OPTION%20USED",
+                    "type": "string",
+                    "title": "The MENU OPTION USED schema",
+
+                    "default": "",
+                    "examples": [
+                        ""
+                    ]
+                }
+            },
+            "additionalProperties": true
+        }
+    },
+    "additionalProperties": true
+}

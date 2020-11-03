@@ -1,0 +1,30 @@
+version: '3'
+services:
+  redis:
+    image: "redis"
+    container_name: "redis"
+    env_file:
+      - .env
+    ports:
+     - "${dcmqPorts}"
+
+  subscriber:
+    image: "subscriber_r2"
+    container_name: "subscriber"
+    environment:
+      - mqServer=redis
+    env_file:
+      - .env
+    depends_on:
+      - "redis"
+
+  utils:
+    image: "utils"
+    container_name: "utils"
+    environment:
+      - mqServer=redis
+    env_file:
+      - .env
+
+    depends_on:
+      - "subscriber"

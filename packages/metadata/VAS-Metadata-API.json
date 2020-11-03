@@ -1,0 +1,139 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "VAS Metadata API",
+    "description" : "API for the VistA Audit Solution Metadata retrieval component"
+  },
+  "paths" : {
+    "/howManyRecords" : {
+      "get" : {
+        "tags" : [ "public" ],
+        "summary" : "Returns the number of metadata and audit records in the DR",
+        "description" : "Returns an object containing the number of metadata records and audit records in the Data Repository. Used for informational and development work",
+        "operationId" : "howManyRecords",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Number of records"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "500" : {
+            "description" : "Internal Server Error DR Not available"
+          }
+        }
+      }
+    },
+    "/AuditRecord/{auditId}" : {
+      "get" : {
+        "tags" : [ "public" ],
+        "summary" : "Returns a specific Audit Record from the S3 Audit container",
+        "parameters" : [ {
+          "name" : "auditId",
+          "in" : "path",
+          "required" : true,
+          "description" : "The id of the Audit record to retrieve",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success - specified Audit Record"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "500" : {
+            "description" : "Internal Server Error DR Not available"
+          }
+        }
+      }
+    },
+    "/MetaData/{patient}" : {
+      "get" : {
+        "tags" : [ "public" ],
+        "summary" : "Returns array of metadata records from Redshift for specified patient",
+        "description" : "Note: DOB & SSN are listed as optional but at least 1 is required, either DOB OR SSN",
+        "parameters" : [ {
+          "name" : "patient",
+          "in" : "path",
+          "required" : true,
+          "description" : "Patient Name - Last,First Middle format",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "ssn",
+          "in" : "query",
+          "required" : false,
+          "description" : "Patient SSN (######### OR #########P)",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "dob",
+          "in" : "query",
+          "required" : false,
+          "description" : "Patient DOB (MMDDYYYY)",
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success - 1 or more Metadata records for specified patient"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "404" : {
+            "description" : "No Metadata records found for specified patient"
+          },
+          "500" : {
+            "description" : "Internal Server Error DR Not available"
+          }
+        }
+      }
+    },
+    "/MetaData/{patient}/{user}" : {
+      "get" : {
+        "tags" : [ "public" ],
+        "summary" : "Returns array of metadata records from Redshift for specified patient/user",
+        "parameters" : [ {
+          "name" : "patient",
+          "in" : "path",
+          "required" : true,
+          "description" : "Patient Identifier (name-ssn-dob)",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "user",
+          "in" : "path",
+          "required" : true,
+          "description" : "User Identifier (name-uid)",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success - 1 or more Metadata records for specified patient"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "404" : {
+            "description" : "No Metadata records found for specified patient"
+          },
+          "500" : {
+            "description" : "Internal Server Error DR Not available"
+          }
+        }
+      }
+    }
+  }
+}

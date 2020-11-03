@@ -1,0 +1,7 @@
+gov/va/redshift/data/ChangeDimensionTest.class
+gov/va/redshift/data/LocationDimensionTest.class
+gov/va/redshift/data/TimeDimensionTest.class
+gov/va/redshift/data/UserDimensionTest.class
+gov/va/redshift/data/PatientDimensionTest.class
+gov/va/redshift/data/DateDimensionTest.class
+gov/va/redshift/data/FileDimensionTest.class

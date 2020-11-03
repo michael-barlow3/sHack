@@ -1,0 +1,16 @@
+FROM alpine
+RUN apk add --update nodejs
+RUN apk add --update npm
+RUN apk add --update bash
+
+WORKDIR /usr
+
+COPY package*.json ./
+
+COPY packages/AWS/* ./AWS/
+COPY packages/sample_data/* ./sample_data/
+COPY packages/subscriber/* ./subscriber/
+COPY packages/subscriber/*js ./subscriber/
+
+RUN npm ci --only=production
+CMD [ "node", "subscriber/" ]

@@ -1,0 +1,16 @@
+FROM alpine
+RUN apk add --update nodejs
+RUN apk add --update npm
+RUN apk add --update bash
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN yarn
+
+#RUN npm ci --only=production
+
+COPY . .
+EXPOSE 8080
+CMD [ "npm", "redshift" ]

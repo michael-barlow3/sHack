@@ -1,0 +1,22 @@
+FROM alpine
+RUN apk add --update nodejs
+RUN apk add --update npm
+RUN apk add --update bash
+
+WORKDIR /usr
+
+COPY package*.json ./
+
+COPY packages/AWS/* ./AWS/
+COPY packages/subscriber/* ./subscriber/
+COPY packages/sample_data/* ./sample_data/
+COPY packages/utils/*.js ./utils/
+COPY ENVs/*.zip ./ENVS/
+
+COPY *.pem ./utils/
+RUN chmod 600 ./utils/*.pem
+
+RUN npm ci --only=production
+# RUN ssh -i vas-dev.pem -L 6379:vas-dev.rwdloz.ng.0001.usgw1.cache.amazonaws.com:6379 ubuntu@52.61.241.177
+
+CMD tail -f /dev/null

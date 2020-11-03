@@ -1,0 +1,5 @@
+packages/**/node_modules
+packages/**/__tests__
+packages/**/reports
+packages/**/*.md
+ReadMe

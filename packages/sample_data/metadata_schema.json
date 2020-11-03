@@ -1,0 +1,68 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "VAS_Metadata_Schema",
+    "type": "object",
+    "title": "Metadata schema",
+    "description": "JSON Schema for a metadata record",
+    "default": {},
+    "examples": [
+        {
+            "p": "GALBASSI,MYRTLE-450862894-19622208",
+            "u": "ZANTIR,KIATAE-80560027",
+            "c": "COUNTRY",
+            "l": "RENO",
+            "d": "20130714095630-0500"
+        }
+    ],
+    "required": [
+        "p",
+        "u",
+        "c",
+        "l",
+        "d"
+    ],
+    "additionalProperties": true,
+    "properties": {
+        "p": {
+            "$id": "#/properties/p",
+            "type": "string",
+            "description": "The Patient full name - SSN - DOB",
+            "examples": [
+                "GALBASSI,MYRTLE-450862894-19622208"
+            ]
+        },
+        "u": {
+            "$id": "#/properties/u",
+            "type": "string",
+            "description": "User Name - UID",
+            "examples": [
+                "ZANTIR,KIATAE-80560027"
+            ]
+        },
+        "c": {
+            "$id": "#/properties/c",
+            "type": "string",
+            "description": "The name of the field which was accessed in the patient's audit record",
+            "examples": [
+                "COUNTRY"
+            ]
+        },
+        "l": {
+            "$id": "#/properties/l",
+            "type": "string",
+            "description": "The Site Location which was where the patient's audit information was accessed",
+            "examples": [
+                "RENO"
+            ]
+        },
+        "d": {
+            "$id": "#/properties/d",
+            "type": "string",
+            "description": "The date the patient's audit record was last accessed (YYYYMMDDhhmmss-zulu offset",
+            "default": "",
+            "examples": [
+                "20130714095630-0500"
+            ]
+        }
+    }
+}
